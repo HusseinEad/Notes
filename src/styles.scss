@@ -1,0 +1,39 @@
+
+i{
+    cursor: pointer;
+}
+.w-40{
+    width: 40%;
+}
+.w-30{
+    width: 30%;
+}
+@media screen and (max-width:900px) {
+    div .form{
+        width: 60%;
+        
+    }
+}
+@media screen and (max-width:800px) {
+    div .form{
+        width: 85%;
+        
+    }
+}
+
+@media screen and (max-width:900px) {
+    div .notes{
+        position: relative;
+        top:50%;
+        left: 70%;
+        transform: translate(-50%,-50%);
+
+
+            
+    }
+    .card{
+        margin-bottom:  20px; 
+    }
+}
+
+

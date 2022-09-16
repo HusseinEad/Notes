@@ -1,0 +1,166 @@
+<section class="pt-5" id="profile">
+    <div class="container">
+      
+        <div class="row ">     
+            <div class="col-md-12 ">
+              <button class="btn btn-info float-right my-5" data-toggle="modal" data-target="#AddNote">Add Note</button>
+            </div>
+
+            <div class="row">
+              <div *ngFor="let note of AllNotes" >
+                <div class="notes col-md-3 my-2">
+
+                <div class="card note " style="width: 16rem;">
+                  <div >
+                                
+                    <i class="fas fa-ellipsis-v float-right pt-3 px-3" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+                    <div class="dropdown">
+            
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a (click)="getID(note._id);setValue()" class="dropdown-item" href="#" data-toggle="modal" data-target="#EditNote"> 
+                            <span>Edit</span>   <i class="fas fa-pen-square text-warning float-right mt-1"></i>
+                           </a>
+                          <a (click)="getID(note._id)" class="dropdown-item" href="#" data-toggle="modal" data-target="#DeleteNote">
+                            <span>Delete</span> <i class="fas fa-trash text-danger float-right mt-1"></i>
+                           </a>
+                        </div>
+                      </div>
+                </div>
+                  <div class="card-body">
+                    <h5 class="card-title text-center">{{note.title}}</h5>
+                    <p class="card-text">{{note.desc}}</p>
+               
+                  </div>
+                </div>
+              </div>
+             </div>
+                
+              
+             
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+  
+  <!------------------------------ Modal ------------------------------->
+
+  <!------------------------------ Add Note ------------------------------->
+
+  <div class="modal fade" id="AddNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+
+      <form [formGroup]='AddNote' (ngSubmit)="addData()">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Note</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+  
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                  <div class="col-md-12">
+                      <input formControlName="title" class="form-control my-3" type="text" placeholder="Title">
+                  </div>
+                  <div class="col-md-12">
+                    <textarea formControlName="desc" class="form-control" placeholder="Add Description" cols="30" rows="5"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+              <button type="submit"  class="btn btn-info">Add Note</button>
+  
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!------------------------------ /Add Note ------------------------------->
+
+    
+
+  <!------------------------------ Edit Note ------------------------------->
+
+  <div class="modal fade" id="EditNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form [formGroup]='EditNote' (ngSubmit)="editNote()">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Note</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+  
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-12">
+                    <input formControlName="title" class="form-control my-3" type="text" placeholder="Title">
+                </div>
+                <div class="col-md-12">
+                  <textarea formControlName="desc" class="form-control" placeholder="Add Description" cols="30" rows="5"></textarea>
+              </div>
+            </div>
+            </div>
+          </div>
+  
+          <div class="modal-footer">
+              <button type="submit" class="btn btn-warning">Edit</button>
+  
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+   
+    </div>
+  </div>
+  <!------------------------------ /Edit Note ------------------------------->
+
+
+  <!------------------------------ Delete Note ------------------------------->
+
+  <div class="modal fade" id="DeleteNote" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you Sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5> Do you really want to delete ? <br>
+                        Process cannot be undone .
+                        </h5>
+                    </div>
+                </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+            <button (click)="deleteNote()"  class="btn btn-danger">Delete</button>
+
+          <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!------------------------------ /Delete Note ------------------------------->

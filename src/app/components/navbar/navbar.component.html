@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<div class="container">
+   
+    <a class="navbar-brand darkgray" href="#"> <i class="far fa-sticky-note darkgray"></i> Notes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon darkgray"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+    
+            <a *ngIf="!isLoggedIn()"class="dropdown-item" routerLink="signIn" href="#">Login</a>
+            <a *ngIf="!isLoggedIn()" class="dropdown-item" routerLink="signUp" href="#">Register</a>
+        
+            <a *ngIf="isLoggedIn()" class="dropdown-item" (click)="logout()" href="#">Logout</a>
+         
+      
+      </ul>
+
+    </div>
+</div> 
+</nav>

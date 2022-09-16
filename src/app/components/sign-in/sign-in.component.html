@@ -1,0 +1,30 @@
+<section id="signIn" >
+    <div class="container">
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
+            <div class="form w-30 m-auto">
+    
+                <input [class.is-valid]="loginForm.get('email')?.status=='VALID'" formControlName="email" type="email" placeholder="Enter Your Email" class="form-control my-2">
+                <div *ngIf="loginForm.get('email')?.errors !=null && loginForm.get('email')?.touched" class="alert alert-danger my-2" class="alert alert-danger my-2" >
+                    <p *ngIf="loginForm.get('email')?.errors?.['required'] " class="mb-0">Email is Required</p>
+                    <p *ngIf="loginForm.get('email')?.errors?.['email'] " class="mb-0">Email is invalid</p>
+    
+                </div>
+                <input [class.is-valid]="loginForm.get('password')?.status=='VALID'" formControlName="password" type="password" placeholder="Enter Your Password" class="form-control my-3 ">
+                <div *ngIf="loginForm.get('password')?.errors !=null && loginForm.get('password')?.touched" class="alert alert-danger my-2 "  >
+                    <p *ngIf="loginForm.get('password')?.errors?.['required'] " class="mb-0">password is Required</p>
+                    <p *ngIf="loginForm.get('password')?.errors?.['pattern'] " class="mb-0">password must start with uppercase ...</p>
+    
+                </div>
+                <button  [disabled]="loginForm.invalid" [ngStyle]="loginForm.invalid? {'background-color': 'gray','border-color':'gray' }:{'background-color': '#17a2b8','border-color':'#17a2b8'}"  class="btn btn-info w-100 mt-2">
+                    <span *ngIf="!isClicked" >Sign In</span>   <span *ngIf="isClicked" >Wating....</span>  
+                  </button>
+              
+                  <div *ngIf="isErrorMessage.length > 0 " class="alert-danger my-3 text-center py-2">{{isErrorMessage}}</div>
+              
+            </div>
+        </form>
+      
+    </div>
+</section>
+
+
